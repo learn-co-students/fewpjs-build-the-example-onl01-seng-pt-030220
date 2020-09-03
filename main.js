@@ -8,8 +8,15 @@ const FULL_HEART = '♥'
 
 document.addEventListener('click', (e) =>{
   let like = document.querySelector('.like-glyph')
-  console.log(like)
-console.log(e)
+  console.log(like.textContent)
+  console.log(EMPTY_HEART)
+    if(like.textContent == EMPTY_HEART){
+        like.textContent = FULL_HEART
+        // return console.log("here")
+    }else{
+      return console.log("not here")
+    }
+
 })
 
 
