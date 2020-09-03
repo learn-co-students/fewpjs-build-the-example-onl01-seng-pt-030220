@@ -5,20 +5,27 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-
-document.addEventListener('click', (e) =>{
-  let like = document.querySelector('.like-glyph')
+let span = document.getElementsByClassName('like-glyph')
+let p = Array.from(span)
+console.log(p, "this is p")
+let ul = document.getElementsByTagName('span')
+// console.log(ul, "this is ul")
+p.forEach(element => element.addEventListener('click', (e) =>{
+  
+  // let like = document.querySelector('.like-glyph')
   // console.log(like.textContent)
   // console.log(EMPTY_HEART)
-    if(like.textContent == EMPTY_HEART){
-        like.textContent = FULL_HEART
+  console.log(e.currentTarget, "this is currentTarget")
+    if(element.textContent == EMPTY_HEART){
+        element.textContent = FULL_HEART
         // return console.log("here")
     }else{
       like.textContent = EMPTY_HEART
+      // like.style.color = 'red'
       // return console.log("not here")
     }
-
-})
+  
+}))
 
 
 
