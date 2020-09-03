@@ -16,12 +16,12 @@ p.forEach(element => element.addEventListener('click', (e) =>{
   // console.log(like.textContent)
   // console.log(EMPTY_HEART)
   console.log(e.currentTarget, "this is currentTarget")
-    if(element.textContent == EMPTY_HEART){
-        element.textContent = FULL_HEART
+    if(e.currentTarget.textContent == EMPTY_HEART){
+      e.currentTarget.textContent = FULL_HEART
         // return console.log("here")
     }else{
-      like.textContent = EMPTY_HEART
-      // like.style.color = 'red'
+      e.currentTarget.textContent = EMPTY_HEART
+      e.currentTarget.style.color = 'red'
       // return console.log("not here")
     }
   
