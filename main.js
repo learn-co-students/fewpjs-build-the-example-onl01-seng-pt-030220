@@ -3,7 +3,9 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 const modal = document.querySelector('#modal')
 let liked = false
+
 // Your JavaScript code goes here!
+
 const likeGlyphs = Array.from(document.querySelectorAll('.like-glyph'))
 // console.log(likeGlyphs)
 likeGlyphs.forEach( glyph => {
@@ -16,6 +18,7 @@ function likePost(glyph){
     mimicServerCall()
       .then(response => {
         console.log('Success:', response);
+        // alert(`Success: ${response}`)
         like(e);
       })
       .catch((error) => {
@@ -27,7 +30,8 @@ function likePost(glyph){
 
 function like(e) {
   // console.log(e.target)
-  if (e.target.innerText === EMPTY_HEART){
+  liked = !liked
+  if (liked) {
     e.target.innerText = FULL_HEART
     e.target.className = "activated-heart"
   } else {
