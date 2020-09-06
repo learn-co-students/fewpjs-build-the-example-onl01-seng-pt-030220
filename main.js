@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const modal = document.getElementById("modal")
         const message = document.querySelector("p#modal-message")
         message.innerText = error
-        console.log(error)
         modal.classList.remove("hidden")
         window.setTimeout(() => {
           modal.className = "hidden"
