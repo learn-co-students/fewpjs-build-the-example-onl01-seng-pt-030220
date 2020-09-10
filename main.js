@@ -4,10 +4,9 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-const errormessage = document.querySelector("#modal")
+const errorMessage = document.querySelector("#modal")
     //errormessage.hidden = true;
-errormessage.className = "hidden"
-const like = document.querySelector(".like")
+errorMessage.className = "hidden"
 
 const hearticon = document.querySelectorAll("span")
 
@@ -17,32 +16,37 @@ hearticon.forEach(e => e.addEventListener("click", (e) => {
         mimicServerCall()
             .then(res => {
                 // errormessage.hidden = true;
-                errormessage.className = "hidden"
-                if (e.target.innerHTML == FULL_HEART) {
-
-                    e.target.innerHTML = EMPTY_HEART
-                    e.target.className = "like-glyph"
-
-                } else if (e.target.innerHTML == EMPTY_HEART) {
-
-                    e.target.innerHTML = FULL_HEART
-                    e.target.className = "activated-heart"
-
-                }
-
+                heartChange(e)
             })
             .catch(e => {
-                errormessage.innerHTML = e
+                errorMessage.innerHTML = e
                     //setTimeout(() => { errormessage.hidden = true; }, 5000);
                     // errormessage.hidden = false;
-                setTimeout(() => { errormessage.className = "hidden"; }, 5000);
-                errormessage.className = ""
+                setTimeout(() => { errorMessage.className = "hidden"; }, 5000);
+                errorMessage.className = ""
 
             })
 
     }
 }))
 
+function heartChange(e) {
+
+    errorMessage.className = "hidden"
+    if (e.target.innerHTML == FULL_HEART) {
+
+        e.target.innerHTML = EMPTY_HEART
+        e.target.className = "like-glyph"
+
+    } else if (e.target.innerHTML == EMPTY_HEART) {
+
+        e.target.innerHTML = FULL_HEART
+        e.target.className = "activated-heart"
+
+    }
+
+
+}
 
 
 //------------------------------------------------------------------------------
