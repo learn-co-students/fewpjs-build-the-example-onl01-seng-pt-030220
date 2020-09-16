@@ -4,7 +4,23 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+let likeBtn = document.querySelectorAll(".like-glyph")
+let hiddenClass = document.querySelector(".hidden")
 
+for(i=0; i < likeBtn.length; i++) {
+  likeBtn[i].addEventListener("click", (e)=> {
+    mimicServerCall()
+    .then(() => {
+      e.target.innerText == '♡' ? e.target.innerText = '♥' : e.target.innerText = '♡'
+      e.target.style.color = "red"
+    })
+    .catch(() => {
+      hiddenClass.className = ""
+    })
+    
+    
+  })
+}
 
 
 //------------------------------------------------------------------------------
