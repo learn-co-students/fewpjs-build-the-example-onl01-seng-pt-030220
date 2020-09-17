@@ -3,7 +3,44 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const modal = document.getElementById('modal');
 
+function hiddenModal(){
+  modal.setAttribute('class', 'hidden');
+}
+
+hiddenModal();
+
+function addLike(e) {
+  let heart = e.target;
+  console.log("Liked");
+
+  mimicServerCall()
+    .then(function(serverMessage){
+      console.log(serverMessage)
+      if (heart.innerHTML == FULL_HEART) {
+        heart.innerHTML = EMPTY_HEART;
+        heart.style.color = '';
+      }
+      else {
+        heart.innerHTML = FULL_HEART;
+        heart.style.color = 'red';
+      }
+    })
+    .catch(function(error){
+      console.log(error)
+      modal.innerText = error;
+      modal.removeAttribute('class');
+      setTimeout(hiddenModal(), 3000)
+    })
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  const likeBtns = document.querySelectorAll('span');
+  for(const btn of likeBtns){
+    btn.addEventListener('click', addLike);
+  }
+})
 
 
 
